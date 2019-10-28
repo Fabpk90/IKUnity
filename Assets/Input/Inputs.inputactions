@@ -1,0 +1,52 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "039f3a1e-5c1a-44f2-9895-cbcd04d86430",
+            "actions": [
+                {
+                    "name": "LeftArm",
+                    "type": "Value",
+                    "id": "b7274af0-1adf-4394-aaf8-6972b03f0507",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightArm",
+                    "type": "Value",
+                    "id": "ebc53f06-3657-42ba-bfa3-bd295856f63c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b1067527-6b79-46ed-8215-fa24cd07ceb4",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0a8c482-cbed-4bbe-80c2-4c83bf5d625a",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightArm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

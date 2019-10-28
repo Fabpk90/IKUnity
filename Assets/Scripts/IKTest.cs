@@ -97,12 +97,20 @@ public class IKTest : UnityEngine.MonoBehaviour
 
    private void CheckForCorrectRotations(Point point, Quaternion quat)
    {
-      Vector3 angles = quat.eulerAngles;
+      var eulerAngles = point.joint.transform.parent.transform.eulerAngles;
+      Vector3 angles = quat.eulerAngles - eulerAngles;
+
       if (point.constrainX)
          if (point.maxX == 0 && point.minX == 0)
             angles.x = 0;
-         else 
+         else
+         {
+            print(quat.eulerAngles);
+            print("Clamping before " + angles.x);
             angles.x = Mathf.Clamp(angles.x, point.minX, point.maxX);
+            print("Clamping after " + angles.x);
+         }
+            
 
       if (point.constrainY)
          if (point.maxY == 0 && point.minY == 0)
@@ -115,9 +123,8 @@ public class IKTest : UnityEngine.MonoBehaviour
             angles.z = 0;
          else
             angles.z = Mathf.Clamp(angles.z, point.minZ, point.maxZ);
-
-      //quat.eulerAngles = angles;
-      point.joint.transform.rotation = Quaternion.Euler(angles);
+      
+      point.joint.transform.eulerAngles = angles + eulerAngles;
    }
 
    private void Forwards()
