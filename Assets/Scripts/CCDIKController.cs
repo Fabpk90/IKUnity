@@ -22,22 +22,27 @@ public class CCDIKController : MonoBehaviour
         input.currentActionMap["LeftArm"].performed += OnLeftArmMoved;
         input.currentActionMap["RightArm"].performed += OnRightArmMoved;
 
-        basePostionLeftGoal = leftArmGoal.transform.position;
-        basePostionRightGoal = rightArmGoal.transform.position;
+        basePostionLeftGoal = leftArmGoal.transform.localPosition;
+        basePostionRightGoal = rightArmGoal.transform.localPosition;
     }
 
     private void OnRightArmMoved(InputAction.CallbackContext obj)
     {
         var val = obj.ReadValue<Vector2>();
         
-        rightArmGoal.transform.position = new Vector3(val.x * rangeRightArm.x, 0, val.y * rangeRightArm.y) + basePostionRightGoal;
+        val.x = Mathf.Clamp(val.x, -.55f, .65f);
+        val.y = Mathf.Clamp01(val.y);
+        
+        rightArmGoal.transform.localPosition = new Vector3(val.x * rangeRightArm.x, 0, val.y * rangeRightArm.y) + basePostionRightGoal;
     }
 
     private void OnLeftArmMoved(InputAction.CallbackContext obj)
     {
         var val = obj.ReadValue<Vector2>();
-        print(val);
+
+        val.x = Mathf.Clamp(val.x, -.55f, .65f);
+        val.y = Mathf.Clamp01(val.y);
         
-        leftArmGoal.transform.position = new Vector3(val.x * rangeLeftArm.x, 0, val.y * rangeLeftArm.y) + basePostionLeftGoal;
+        leftArmGoal.transform.localPosition = new Vector3(val.x * rangeLeftArm.x, 0, val.y * rangeLeftArm.y) + basePostionLeftGoal;
     }
 }

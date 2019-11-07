@@ -53,7 +53,7 @@ public class CCDIK : MonoBehaviour
             //we skip the effector (base bone)
             for (int j = 0; j < joints.Count; j++)
             {
-                for (int i = 0; i < j + 3 && i < joints.Count; i++)
+                //for (int i = 0; i < j + 3 && i < joints.Count; i++)
                 {
                     RotateBone(joints[j], goalPosition);
                 }
